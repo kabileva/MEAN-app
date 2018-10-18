@@ -2,7 +2,8 @@
     'use strict';
     
     angular.module('app', [
-    "ui.router"
+    "ui.router",
+    'ngMap'
     ])
     .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
@@ -23,6 +24,10 @@
     url: "/details/:id",
     templateUrl: "/views/user/details.html",
     controller: "userController"
+    }).state("map", {
+        url: "/map",
+        templateUrl: "/views/map/map.html",
+        controller: "CircleSimpleCtrl"
     });
     })
     .constant("globalConfig", {

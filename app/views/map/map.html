@@ -1,0 +1,16 @@
+<h2> Map testing </h2>
+
+<div ng-controller="CircleSimpleCtrl as vm">
+        <ng-map center="Seoul" zoom="8" mayTypeId="TERRAIN">
+                <shape name="circle" ng-repeat="user in vm.users" no-watcher="true"
+                  stroke-color="#FF0000"
+                  stroke-opacity="0.8"
+                  stroke-weight="2"
+                  fill-color="#FF0000"
+                  fill-opacity="0.35"
+                  center="{{user.address}}"
+                  radius="{{vm.getRadius(100)}}">
+                </shape>
+              </ng-map>
+</div>
+
