@@ -16,5 +16,8 @@ function Controller($scope, $rootScope, userService, $state, $stateParams) {
       return Math.sqrt(num) * 100;
     }
   };
+  $scope.windowText = function(name, contactNo, address) {
+      $scope.script = ""
+  }
   
 })();
