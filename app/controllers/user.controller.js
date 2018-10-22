@@ -5,12 +5,12 @@
     .module('app')
     .controller('userController', Controller);
     
-    Controller.$inject = ['$scope', '$rootScope', 'userService', '$state', '$stateParams'];
+    Controller.$inject = ['$scope', '$rootScope', 'userService', '$state', '$stateParams', 'mapService'];
     
-    function Controller($scope, $rootScope, userService, $state, $stateParams) {
+    function Controller($scope, $rootScope, userService, $state, $stateParams, mapService) {
         $scope.users = [];
         
-            if ($state.current.name == "users") {
+        if ($state.current.name == "users") {
                 console.log("listing");
             $rootScope.Title = "User Listing";
             userService.getUsers().then(function(res) {
@@ -64,6 +64,12 @@
                     });
                 }
             };
+        }
+        
+        $scope.clicked = function() {
+            map = mapService.getMap();
+            console.log("clicked");
+            console.log(map);
         }
     }
    })();

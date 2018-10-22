@@ -4,7 +4,7 @@ var app = angular.module('app');
 
 app.controller('CircleSimpleCtrl', Controller);
 
-function Controller($scope, $rootScope, userService, $state, $stateParams) {
+function Controller($scope, $rootScope, userService, $state, $stateParams, NgMap) {
     Controller.$inject = ['$scope', '$rootScope', 'userService', '$state', '$stateParams'];
     var vm = this;
     userService.getUsers().then(function(res) {
@@ -15,9 +15,15 @@ function Controller($scope, $rootScope, userService, $state, $stateParams) {
     vm.getRadius = function(num) {
       return Math.sqrt(num) * 100;
     }
+    var map;
+    NgMap.getMap().then(function(evtMap){
+      map = evtMap;
+    });
+    vm.showInfo = function (evt, id) {
+        vm.user= vm.users[id];
+        map.showInfoWindow('marker-info', this);
+      };
   };
-  $scope.windowText = function(name, contactNo, address) {
-      $scope.script = ""
-  }
+
   
 })();
