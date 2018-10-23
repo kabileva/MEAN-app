@@ -13,7 +13,7 @@
     </tr>
     <tr ng-repeat="user in users">
         <td> {{ $index + 1 }} </td>
-        <td on-click = "clicked()"> {{ user.firstName + " " + user.lastName }} </td>
+        <td> {{ user.firstName + " " + user.lastName }} </td>
         <td> {{ user.address }} </td>
         <td> {{ user.contactNo }} </td>
         <td> {{ user.registrationDate | date: 'medium'}} </td>
@@ -22,7 +22,7 @@
             <a href="#" ng-click="deleteUser(user._id)">Delete</a>
         </td>
         <td>
-                <a href="#" ng-click="clicked()">Show</a>
+            <a href="#" ng-click="clicked()">Show</a>
         </td>
     </tr>
 </table>
@@ -30,31 +30,5 @@
     No record found !!
 </div>
 
-
-<div ng-controller="CircleSimpleCtrl as vm">
-    <div class="mapWrap" data-tap-disabled="true">
-        <map center="Seoul" zoom="12" mayTypeId="TERRAIN">
-            <marker id = "{{$index}}" position = {{user.address}}
-                ng-repeat = "user in vm.users"
-                on-click = "vm.showInfo(event, $index)">
-            </marker>
-            <info-window id="marker-info" visible="false" visible-on-marker="{{$index}}">
-                <div ng-non-bindable="">
-                    <h4> </h4>
-                    <!-- <h3 id="firstHeading" class="firstHeading">{{ vm.user.firstName + " " + vm.user.lastName }}</h3> -->
-                    <!-- <div id="bodyContent">
-                        <p>
-                        {{user.address}}
-                        <br>{{user.contactNo}}
-                        </p>
-                    </div> -->
-                </div>
-                
-            </info-window>
-        
-            
-        </map>
-    </div>
-</div>
 
 

@@ -7,17 +7,19 @@
     
     Service.$inject = [];
     
-    function Service(NgMap) {
-    return {
-    getMap: function() {
-        console.log("service");
-        var map;
-        NgMap.getMap().then(function(thisMap) {
-            map = thisMap;
-        });
-        
-        return map
-        }
-    };
+    function Service() {
+        var map = null;
+        return {
+            getMap: function() {
+                console.log("get map");
+                return map;
+                },
+            setMap: function(thisMap) {
+                console.log("set map");
+               
+                map = thisMap;
+                console.log(map);
+            }
+        };
     }
-   })();
+})();

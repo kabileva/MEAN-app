@@ -1,16 +1,23 @@
-<h2> Map testing </h2>
-
-<div ng-controller="CircleSimpleCtrl as vm">
-        <ng-map center="Seoul" zoom="8" mayTypeId="TERRAIN">
-                <shape name="circle" ng-repeat="user in vm.users" no-watcher="true"
-                  stroke-color="#FF0000"
-                  stroke-opacity="0.8"
-                  stroke-weight="2"
-                  fill-color="#FF0000"
-                  fill-opacity="0.35"
-                  center="{{user.address}}"
-                  radius="{{vm.getRadius(100)}}">
-                </shape>
-              </ng-map>
-</div>
-
+  <div class="mapWrap" data-tap-disabled="true">
+      <map center="Seoul" zoom="12" mayTypeId="TERRAIN">
+          <marker id = "{{$index}}" position = {{user.address}}
+              ng-repeat = "user in users"
+              on-click = "showInfo(event, '{{$index}}')">
+          </marker>
+          <info-window id="marker-info" visible="false" visible-on-marker="{{$index}}">
+              <div ng-non-bindable="">
+                  <h4> </h4>
+                  <!-- <h3 id="firstHeading" class="firstHeading">{{ vm.user.firstName + " " + vm.user.lastName }}</h3> -->
+                  <!-- <div id="bodyContent">
+                      <p>
+                      {{user.address}}
+                      <br>{{user.contactNo}}
+                      </p>
+                  </div> -->
+              </div>
+              
+          </info-window>
+      
+          
+      </map>
+  </div>

@@ -10,8 +10,18 @@
     
     $stateProvider.state("users", {
     url: "/",
-    templateUrl: "/views/user/index.html",
-    controller: "userController"
+    views: {
+        'users': {
+            templateUrl: "/views/user/index.html",
+            controller: "userController"
+        },
+        'map': {
+            templateUrl: "/views/map/map.html",
+            controller: "mapController"            
+        }
+    }
+    
+    //controller: "userController"
     }).state("create", {
     url: "/create",
     templateUrl: "/views/user/create.html",
