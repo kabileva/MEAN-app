@@ -5,9 +5,9 @@
     .module('app')
     .controller('userController', Controller);
     
-    Controller.$inject = ['$scope', '$rootScope', 'userService', '$state', '$stateParams', 'mapService'];
+    Controller.$inject = ['$scope', '$rootScope', 'userService', '$state', '$stateParams', 'mapService', 'NgMap'];
     
-    function Controller($scope, $rootScope, userService, $state, $stateParams, mapService) {
+    function Controller($scope, $rootScope, userService, $state, $stateParams, mapService, NgMap) {
         $scope.users = [];
         
         
@@ -67,11 +67,18 @@
             };
         }
         
-        $scope.clicked = function() {
+        $scope.clicked = function(id) {
             var map;
+            var user;
             map = mapService.getMap();
+            user= $scope.users[id];
             console.log("clicked");
             console.log(map);
+            NgMap.getGeoLocation(user.address).then(function(latlng) {
+
+                map.setCenter(latlng);
+            });
+            //map.setCenter(new google.maps.LatLng(0, 0));
         }
     }
    })();
