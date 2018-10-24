@@ -7,26 +7,29 @@ app.controller('mapController', Controller);
 function Controller($scope, $rootScope, userService, $state, $stateParams, mapService, NgMap) {
     Controller.$inject = ['$scope', '$rootScope', 'userService', '$state', '$stateParams','NgMap'];
     var vm = this;
+    var map;
     NgMap.getMap().then(function(evtMap){
-        $scope.map = evtMap;
-        mapService.setMap($scope.map);
+        map = evtMap;
+        mapService.setMap(map);
         console.log($scope.map);
     });
-    
     userService.getUsers().then(function(res) {
-        $scope.users = res.data;
-        console.log($scope.users);
+        vm.users = res.data;
+        console.log(vm.users);
     }).catch(function(err) {
         console.log(err);
     });
-    $scope.getRadius = function(num) {
+    vm.getRadius = function(num) {
       return Math.sqrt(num) * 100;
     }
 
-    $scope.showInfo = function(evt, id) {
-        $scope.user= $scope.users[id];
+    
+     vm.showInfo = function(evt, id) {
+        vm.user= vm.users[id];
         console.log("show info");
-        $scope.map.showInfoWindow('marker-info', this);
+        console.log(id);
+        console.log(map);
+        map.showInfoWindow('marker-info', this);
       };
   };
 

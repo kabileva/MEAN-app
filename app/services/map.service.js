@@ -16,7 +16,6 @@
                 },
             setMap: function(thisMap) {
                 console.log("set map");
-               
                 map = thisMap;
                 console.log(map);
             }

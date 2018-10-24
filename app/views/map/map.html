@@ -1,23 +1,15 @@
+  <div ng-controller="mapController as vm">
   <div class="mapWrap" data-tap-disabled="true">
-      <map center="Seoul" zoom="12" mayTypeId="TERRAIN">
-          <marker id = "{{$index}}" position = {{user.address}}
-              ng-repeat = "user in users"
-              on-click = "showInfo(event, '{{$index}}')">
-          </marker>
-          <info-window id="marker-info" visible="false" visible-on-marker="{{$index}}">
-              <div ng-non-bindable="">
-                  <h4> </h4>
-                  <!-- <h3 id="firstHeading" class="firstHeading">{{ vm.user.firstName + " " + vm.user.lastName }}</h3> -->
-                  <!-- <div id="bodyContent">
-                      <p>
-                      {{user.address}}
-                      <br>{{user.contactNo}}
-                      </p>
-                  </div> -->
-              </div>
-              
-          </info-window>
-      
-          
-      </map>
-  </div>
+        <ng-map center="Seoul" zoom="12" mayTypeId="TERRAIN">
+                <marker id = "{{$index}}" position = {{user.address}}
+                ng-repeat = "user in vm.users"
+                on-click = "vm.showInfo(event, $index)">
+                    <info-window id="marker-info">
+                        <div ng-non-bindable="">
+                            {{vm.user.firstName}}
+                        </div> 
+                    </info-window>
+                </marker>
+       </ng-map>
+    </div>
+</div>

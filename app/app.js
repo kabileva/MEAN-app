@@ -17,7 +17,7 @@
         },
         'map': {
             templateUrl: "/views/map/map.html",
-            controller: "mapController"            
+            controller: ""            
         }
     }
     
